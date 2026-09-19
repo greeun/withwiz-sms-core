@@ -45,7 +45,22 @@ jobs:
             exit 1
           fi
 
+      # A version already on the registry cannot be republished. Skipping keeps
+      # the run green for tags whose version was published by hand.
+      - name: Check whether the version is already on npm
+        id: registry
+        run: |
+          name="$(node -p "require('./package.json').name")"
+          version="$(node -p "require('./package.json').version")"
+          if npm view "$name@$version" version > /dev/null 2>&1; then
+            echo "Found $name@$version on the registry; publishing will be skipped."
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to npm
+        if: steps.registry.outputs.published == 'false'
         run: pnpm publish --access public --provenance --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
