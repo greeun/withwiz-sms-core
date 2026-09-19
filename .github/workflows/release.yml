@@ -1,5 +1,9 @@
 name: Release
 
+# Publishing goes through npm trusted publishing (OIDC), so no npm token is
+# stored here. The trust relationship is configured on the package settings
+# page at npmjs.com and names this repository and this workflow file.
+
 on:
   push:
     tags:
@@ -7,7 +11,7 @@ on:
 
 permissions:
   contents: read
-  # Required for npm provenance attestation.
+  # Lets the job mint the OIDC token npm exchanges for publish credentials.
   id-token: write
 
 jobs:
@@ -20,6 +24,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
 
+      # Trusted publishing needs Node 22.14 or later; the 22 line satisfies it.
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
@@ -59,8 +64,8 @@ jobs:
             echo "published=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # No NODE_AUTH_TOKEN on purpose: the OIDC exchange only runs when no
+      # long-lived token is configured.
       - name: Publish to npm
         if: steps.registry.outputs.published == 'false'
         run: pnpm publish --access public --provenance --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
