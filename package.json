@@ -1,0 +1,50 @@
+{
+  "name": "@withwiz/sms-core",
+  "version": "0.1.0",
+  "description": "SMS/LMS/MMS sending core with a provider-neutral interface and Aligo/Solapi adapters",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./providers/aligo": {
+      "types": "./dist/providers/aligo.d.ts",
+      "import": "./dist/providers/aligo.mjs",
+      "require": "./dist/providers/aligo.js"
+    },
+    "./providers/solapi": {
+      "types": "./dist/providers/solapi.d.ts",
+      "import": "./dist/providers/solapi.mjs",
+      "require": "./dist/providers/solapi.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": ["dist", "README.md", "README.ko.md"],
+  "engines": { "node": ">=20.9.0" },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "solapi": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "solapi": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.18",
+    "solapi": "^5.5.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
+  }
+}

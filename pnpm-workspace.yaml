@@ -1,0 +1,8 @@
+allowBuilds:
+  esbuild: true
+
+overrides:
+  # tsup and vitest both pull esbuild 0.27.x, which is affected by GHSA-g7r4-m6w7-qqqr.
+  # The advisory only concerns the development server on Windows and nothing ships in dist,
+  # but pinning the patched line keeps the audit clean.
+  esbuild: '>=0.28.1'

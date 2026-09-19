@@ -1,0 +1,94 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Packaged tarballs
+*.tgz
+
+# Test coverage
+coverage/
+*.lcov
+
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Caches
+.cache/
+.eslintcache
+.turbo/
+.vite/
+.vitest/
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
+
+# Added by github-init
+
+# build output
+build/
+.next/
+out/
+
+# logs
+logs/
+
+# test output
+.nyc_output/
+
+# env files (example and template files stay tracked)
+.env*
+!.env*.example
+!.env*.template
+
+# editors
+*.swo
+
+# this project uses pnpm (pnpm-lock.yaml); other lockfiles are strays
+yarn.lock
+package-lock.json
+bun.lockb
+
+# claude code (instructions, local settings, session worktrees, MCP config)
+CLAUDE.md
+.claude.json
+.claude.json.*
+.claude-*.json
+
+# superpowers (auto-installed working notes)
+.superpowers/
+docs/superpowers/
+
+# axt local profile (including backups)
+.axt/
+.axt-*
+.axt.*
+
+# ast (agent session tracker) local state
+.ast/
+.ast-*
+.ast.*
+
+# exceptions restated so the rules above cannot cancel them
+!.env.example
