@@ -2,7 +2,27 @@
   "name": "@withwiz/sms-core",
   "version": "0.1.0",
   "description": "SMS/LMS/MMS sending core with a provider-neutral interface and Aligo/Solapi adapters",
+  "keywords": [
+    "sms",
+    "lms",
+    "mms",
+    "aligo",
+    "solapi",
+    "notification",
+    "messaging",
+    "korea"
+  ],
   "license": "MIT",
+  "author": "withwiz <ss@withwiz.com>",
+  "homepage": "https://github.com/greeun/withwiz-sms-core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greeun/withwiz-sms-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/greeun/withwiz-sms-core/issues"
+  },
+  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -26,8 +46,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist", "README.md", "README.ko.md"],
+  "files": ["dist", "README.md", "README.ko.md", "LICENSE"],
   "engines": { "node": ">=20.9.0" },
+  "packageManager": "pnpm@11.24.0",
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
