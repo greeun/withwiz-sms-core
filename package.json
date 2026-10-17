@@ -1,6 +1,6 @@
 {
   "name": "@withwiz/sms-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SMS/LMS/MMS sending core with a provider-neutral interface and Aligo/Solapi adapters",
   "keywords": [
     "sms",
