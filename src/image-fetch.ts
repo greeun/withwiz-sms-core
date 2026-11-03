@@ -20,9 +20,12 @@ function blockListFor(subnets: readonly BlockedSubnet[]): BlockList {
   return list;
 }
 
-/** A reserved name covers its subdomains too: api.localhost resolves to the local machine as well. */
+/**
+ * A reserved name covers its subdomains too: api.localhost resolves to the local machine as well.
+ * Trailing dots are ignored because `localhost.` is the same fully qualified name as `localhost`.
+ */
 function isBlockedHostname(host: string, blocked: readonly string[]): boolean {
-  const lower = host.toLowerCase();
+  const lower = host.toLowerCase().replace(/\.+$/, '');
   return blocked.some((name) => lower === name || lower.endsWith(`.${name}`));
 }
 
