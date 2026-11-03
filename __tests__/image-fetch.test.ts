@@ -150,3 +150,20 @@ describe('fetchImage', () => {
     );
   });
 });
+
+describe('assertAllowedImageUrl trailing dot', () => {
+  it.each(['http://localhost./a.jpg', 'http://LOCALHOST../a.jpg', 'http://api.localhost./a.jpg'])(
+    'rejects %s, which resolves to the local machine',
+    (url) => {
+      expect(() => assertAllowedImageUrl(url)).toThrow(/blocked host name/i);
+    },
+  );
+
+  it('rejects an IPv4 loopback written with a trailing dot', () => {
+    expect(() => assertAllowedImageUrl('http://127.0.0.1./a.jpg')).toThrow(/blocked network address/i);
+  });
+
+  it('still allows an ordinary host written with a trailing dot', () => {
+    expect(assertAllowedImageUrl('https://cdn.example.com./a.jpg').hostname).toBe('cdn.example.com.');
+  });
+});

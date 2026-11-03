@@ -1,6 +1,6 @@
 {
   "name": "@withwiz/sms-core",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "SMS/LMS/MMS sending core with a provider-neutral interface and Aligo/Solapi adapters",
   "keywords": [
     "sms",
@@ -46,8 +46,15 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["dist", "README.md", "README.ko.md", "LICENSE"],
-  "engines": { "node": ">=20.9.0" },
+  "files": [
+    "dist",
+    "README.md",
+    "README.ko.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "packageManager": "pnpm@11.24.0",
   "scripts": {
     "build": "tsup",
@@ -59,7 +66,9 @@
     "solapi": ">=5"
   },
   "peerDependenciesMeta": {
-    "solapi": { "optional": true }
+    "solapi": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/node": "^22.19.18",
